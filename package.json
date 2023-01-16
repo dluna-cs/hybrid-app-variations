@@ -1,10 +1,7 @@
 {
   "name": "hybrid-apps-workspaces",
-  "workspaces": [
-    "angular",
-    "capacitor",
-    "cordova",
-    "react",
-    "vue"
-  ]
+  "private": true,
+  "scripts": {
+    "build": "echo not implemented"
+  }
 }
