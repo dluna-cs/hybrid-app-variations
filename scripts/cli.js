@@ -1,7 +1,7 @@
 const { execSync } = require('child_process');
 
 // Get params
-const [nodePath, cliPath, ...params] = process.argv;
+const [nodePath, cliPath, sh, ...params] = process.argv;
 const rootPath = cliPath.replace('/scripts/cli.js', '');
 
 
@@ -43,6 +43,7 @@ function prepare(framework, wrapper, /*platform*/) {
 console.log(rootPath, process.cwd());
 
 // Main process
-const [framework, wrapper, platform] = rest;
+const [action, framework, wrapper, platform] = params;
 
+console.log('Running action', params);
 prepare(framework, wrapper);
