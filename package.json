@@ -2,6 +2,6 @@
   "name": "hybrid-apps-workspaces",
   "private": true,
   "scripts": {
-    "build": "echo not implemented"
+    "cli": "node ./scripts/cli.js ${0} ${1} ${2}"
   }
 }
