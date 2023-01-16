@@ -1,0 +1,11 @@
+{
+  "appId": "com.variations.capacitor.app",
+  "appName": "capacitor",
+  "bundledWebRuntime": false,
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "hybrid-apps-workspaces",
+  "workspaces": [
+    "angular",
+    "capacitor",
+    "cordova",
+    "react",
+    "vue"
+  ]
+}
