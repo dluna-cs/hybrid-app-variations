@@ -63,20 +63,25 @@ function restore(wrapper) {
     console.error(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
     process.exit(-1);
   }
-  execute(`git clean -xdf`, { cwd: `${rootPath}/packages/wrapper` });
+
+  const wrapperPath = `${rootPath}/packages/${wrapper}`
+  execute(`git clean -xdf`, { cwd: wrapperPath });
   execute(`git restore -s@ -SW  -- packages/${wrapper}`, { cwd: rootPath });
+  execute(`npm i`, { cwd: wrapperPath });
 }
 
 
 
 // Main process
-const [action, ...args] = params;
-const actions = { prepare, run };
-const actionFn = actions[action];
+const [command, ...args] = params;
+const commands = { prepare, run, restore };
+const commandFn = commands[command];
 
-if (!actionFn) {
+if (!commandFn) {
+  console.log(`CLI command ${command} does not exist.`)
   process.exit(-1);
 }
 
 // Run the action
-actionFn.apply(null, args);
+console.log(`Running command ${command} with arguments ${args}`)
+commandFn.apply(null, args);
