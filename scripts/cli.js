@@ -6,9 +6,9 @@ const rootPath = cliPath.replace('/scripts/cli.js', '');
 
 
 const buildAssets = {
-  angular: `${rootPath}/packages/app-react/dist`,
+  angular: `${rootPath}/packages/app-angular/dist/app-angular`,
   react: `${rootPath}/packages/app-react/build`,
-  vue: `${rootPath}/packages/app-react/build`,
+  // vue: `${rootPath}/packages/app-react/build`,
 };
 const wrapperSrc = {
   capacitor: `${rootPath}/packages/capacitor/dist`,
@@ -40,10 +40,24 @@ function prepare(framework, wrapper, /*platform*/) {
   // execSync(`${wrapperBin} run ${platform}`, { cwd: `${rootPath}/packages/${wrapper}` });
 }
 
-console.log(rootPath, process.cwd());
+/**
+ * 
+ * @param {string} framework the UI framework to build (angular, react, vue)
+ * @param {string} wrapper the wrapper to use (capacitor, cordova)
+ * @param {string} platform the platform to run (android, ios)
+ */
+function run(framework, wrapper, platform) {
+  console.log('run', arguments)
+}
 
 // Main process
-const [action, framework, wrapper, platform] = params;
+const [action, ...args] = params;
+const actions = { prepare, run };
+const actionFn = actions[action];
 
-console.log('Running action', params);
-prepare(framework, wrapper);
+if (!actionFn) {
+  process.exit(-1);
+}
+
+// Run the action
+actionFn.apply(null, args);
