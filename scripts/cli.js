@@ -63,7 +63,8 @@ function restore(wrapper) {
     console.error(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
     process.exit(-1);
   }
-  execute(`git restore -s@ -SW  -- packages/${wrapper}`, { cwd: rootPath })
+  execute(`git clean -xdf`, { cwd: `${rootPath}/packages/wrapper` });
+  execute(`git restore -s@ -SW  -- packages/${wrapper}`, { cwd: rootPath });
 }
 
 
