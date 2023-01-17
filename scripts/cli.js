@@ -15,14 +15,16 @@ const wrapperSrc = {
   cordova: `${rootPath}/packages/cordova/www`,
 };
 
+function execute(command, options) {
+  return execSync(command, { stdio: 'inherit', ...options });
+}
+
 /**
  * 
  * @param {string} framework the UI framework to build (angular, react, vue)
  * @param {string} wrapper the wrapper to use (capacitor, cordova)
- * @param {string} platform the platform to run (android, ios)
  */
-function prepare(framework, wrapper, /*platform*/) {
-  // const wrapperBin = wrapper === 'capacitor' ? 'npx cap' : 'cordova' 
+function prepare(framework, wrapper) {
   const source = buildAssets[framework];
   const dest = wrapperSrc[wrapper];
 
@@ -35,9 +37,9 @@ function prepare(framework, wrapper, /*platform*/) {
     process.exit(-1);
   }
 
-  execSync('npm run build', { cwd: `${rootPath}/packages/app-${framework}` });
-  execSync(`cp ${source}/* ${dest}`);
-  // execSync(`${wrapperBin} run ${platform}`, { cwd: `${rootPath}/packages/${wrapper}` });
+  console.log(`Preparing ${framework} project for ${wrapper} wrapper.`)
+  execute('npm run build', { cwd: `${rootPath}/packages/app-${framework}` });
+  execute(`cp -r ${source}/* ${dest}`);
 }
 
 /**
@@ -49,6 +51,22 @@ function prepare(framework, wrapper, /*platform*/) {
 function run(framework, wrapper, platform) {
   console.log('run', arguments)
 }
+
+/**
+ * 
+ * @param {string} wrapper the wrapper to use (capacitor, cordova)
+ */
+function restore(wrapper) {
+  const wrapperKeys = Object.keys(wrapperSrc);
+
+  if (wrapperKeys.indexOf(wrapper) === -1) {
+    console.error(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
+    process.exit(-1);
+  }
+  execute(`git restore -s@ -SW  -- packages/${wrapper}`, { cwd: rootPath })
+}
+
+
 
 // Main process
 const [action, ...args] = params;
