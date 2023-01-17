@@ -71,7 +71,6 @@ function restore(wrapper) {
 }
 
 
-
 // Main process
 const [command, ...args] = params;
 const commands = { prepare, run, restore };
