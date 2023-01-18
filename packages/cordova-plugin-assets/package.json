@@ -1,0 +1,29 @@
+{
+  "name": "cordova-plugin-assets",
+  "version": "0.0.1",
+  "description": "Cordova Device Assets",
+  "types": "./types/index.d.ts",
+  "cordova": {
+    "id": "cordova-plugin-assets",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "assets",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint ."
+  },
+  "author": "David Luna",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@cordova/eslint-config": "^3.0.0"
+  }
+}
