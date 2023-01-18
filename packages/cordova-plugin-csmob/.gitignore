@@ -13,5 +13,3 @@ Thumbs.db
 *.user
 
 node_modules
-
-src/electron/package-lock.json

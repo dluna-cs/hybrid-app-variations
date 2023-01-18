@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-assets-tests",
+  "name": "cordova-plugin-csmob-tests",
   "version": "0.0.1",
   "description": "",
   "cordova": {
-    "id": "cordova-plugin-assets-tests",
+    "id": "cordova-plugin-csmob-tests",
     "platforms": []
   },
   "keywords": [

@@ -1,10 +1,10 @@
 {
-  "name": "cordova-plugin-assets",
+  "name": "cordova-plugin-csmob",
   "version": "0.0.1",
-  "description": "Cordova Device Assets",
+  "description": "Cordova Cs MObile Plugin for Experiments",
   "types": "./types/index.d.ts",
   "cordova": {
-    "id": "cordova-plugin-assets",
+    "id": "cordova-plugin-csmob",
     "platforms": [
       "android",
       "ios"

@@ -21,36 +21,41 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-assets"
+    id="cordova-plugin-csmob"
     version="0.0.1">
     <name>Assets</name>
-    <description>Cordova Assets Plugin</description>
+    <description>Cordova Cs Mobile Plugin for Experimentation</description>
     <license>Apache 2.0</license>
     <keywords>cordova,assets</keywords>
     
-    <js-module src="www/assets.js" name="assets">
-        <clobbers target="assets" />
+    <js-module src="www/CsMob.js" name="CsMob">
+        <clobbers target="CsMob" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Assets" >
-                <param name="android-package" value="com.variations.cordova.assets.Assets"/>
+            <feature name="CsMob" >
+                <param name="android-package" value="com.variations.cordova.csmob.CsMob"/>
             </feature>
         </config-file>
-
-        <source-file src="src/android/Assets.java" target-dir="src/com/variations/cordova/assets" />
+        <framework src="com.contentsquare.android:library:4.12.0" />
+        <source-file src="src/android/CsMobPlugin.java" target-dir="src/com/variations/cordova/csmob" />
     </platform>
 
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="Assets">
-                <param name="ios-package" value="CDVAssets"/>
+            <feature name="CDVCsMobPlugin">
+                <param name="ios-package" value="CDVCsMobPlugin"/>
             </feature>
         </config-file>
+        <podspec>
+            <pods use-frameworks="true">
+                <pod name="CS_iOS_SDK_STATIC" spec="4.15.1"/>
+            </pods>
+        </podspec>
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
-        <source-file src="src/ios/CDVAssets.swift" />
+        <source-file src="src/ios/CDVCsMobPlugin.swift" />
     </platform>
 </plugin>
