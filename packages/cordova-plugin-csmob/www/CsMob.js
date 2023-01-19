@@ -5,12 +5,13 @@ function Assets () {}
 /**
  * Get assets list
  *
- * @param {Function} successCallback The function to call when the heading data is available
- * @param {Function} errorCallback The function to call when there is an error getting the heading data. (OPTIONAL)
+ * @param {Object} command the command to send to SDK
+ * @param {String} command.type the command type
+ * @param {Object} command.payload the data associated with the command
  */
-CsMob.prototype.list = function () {
+CsMob.prototype.sendCommand = function () {
     return new Promise(function(resolve, reject) {
-        exec(resolve, reject, 'CsMob', 'list', []);
+        exec(resolve, reject, 'CsMob', 'sendCommand', [payload]);
     });
 };
 

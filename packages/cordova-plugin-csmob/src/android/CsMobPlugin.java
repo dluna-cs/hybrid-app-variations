@@ -57,7 +57,7 @@ public class CsMobPlugin extends CordovaPlugin {
    * @return                  True if the action was valid, false if not.
    */
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-    if ("list".equals(action)) {
+    if ("sendCommand".equals(action)) {
       JSONObject r = new JSONObject();
       callbackContext.success(r);
     }
