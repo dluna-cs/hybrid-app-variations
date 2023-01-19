@@ -1,6 +1,8 @@
 /*
  * Notes: The @objc shows that this class & function should be exposed to Cordova.
  */
+import ContentsquareModule
+import WebKit
 
 @objc(CDVCsMobPlugin) class CDVCsMobPlugin : CDVPlugin {
 
