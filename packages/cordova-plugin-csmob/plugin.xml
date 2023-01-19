@@ -23,11 +23,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-csmob"
     version="0.0.1">
-    <name>Assets</name>
+    <name>Cordova CS Mobile</name>
     <description>Cordova Cs Mobile Plugin for Experimentation</description>
     <license>Apache 2.0</license>
     <keywords>cordova,assets</keywords>
     
+    <asset src="www/web-view-tracking-tag-dev.min" target="js/wv_tag.js" />
     <js-module src="www/CsMob.js" name="CsMob">
         <clobbers target="CsMob" />
     </js-module>
