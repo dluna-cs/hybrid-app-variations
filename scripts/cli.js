@@ -15,41 +15,76 @@ const wrapperSrc = {
   cordova: `${rootPath}/packages/cordova/www`,
 };
 
+function validateFramework(framework) {
+  const frameworkKeys = Object.keys(buildAssets);
+
+  if (frameworkKeys.indexOf(framework) === -1) {
+    console.error(`UI framework ${framework} unknown. Available ones are ${frameworkKeys}`);
+    process.exit(-1);
+  }
+}
+function validateWrapper(wrapper) {
+  const wrapperKeys = Object.keys(wrapperSrc);
+
+  if (wrapperKeys.indexOf(wrapper) === -1) {
+    console.error(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
+    process.exit(-1);
+  }
+}
+
+/**
+ * Runs the command adding console output as default stio
+ *
+ * @param {String} command 
+ * @param {ExecOptions} options 
+ * @returns 
+ */
 function execute(command, options) {
   return execSync(command, { stdio: 'inherit', ...options });
 }
 
 /**
- * 
+ * Does the build of UI and wrapper for the platform
  * @param {string} framework the UI framework to build (angular, react, vue)
  * @param {string} wrapper the wrapper to use (capacitor, cordova)
+ * @param {string} platform the platform to build for (android, ios)
  */
-function prepare(framework, wrapper) {
+function build(framework, wrapper, platform) {
+  // Validations
+  validateFramework(framework);
+  validateWrapper(wrapper);
+  if (platform !== 'android' && platform !== 'ios') {
+    console.error(`Platform ${platform} unknown. Available ones are android & ios`);
+    process.exit(-1);
+  }
+
   const source = buildAssets[framework];
   const dest = wrapperSrc[wrapper];
-
-  if (!source) {
-    console.error(`UI framework ${framework} unknown. Available ones are ${Object.keys(buildAssets)}`);
-    process.exit(-1);
-  }
-  if (!dest) {
-    console.error(`Native wrapper ${wrapper} unknown. Available ones are ${Object.keys(wrapperSrc)}`);
-    process.exit(-1);
-  }
+  const wrapperCli = wrapper === 'cordova' ? 'cordova' : 'npx cap';
 
   console.log(`Preparing ${framework} project for ${wrapper} wrapper.`)
   execute('npm run build', { cwd: `${rootPath}/packages/app-${framework}` });
   execute(`cp -r ${source}/* ${dest}`);
+  execute(`${wrapperCli} build ${platform}`, { cwd: `${rootPath}/packages/${wrapper}` });
 }
 
 /**
- * 
- * @param {string} framework the UI framework to build (angular, react, vue)
+ * Installs plugins on the given wrapper
  * @param {string} wrapper the wrapper to use (capacitor, cordova)
- * @param {string} platform the platform to run (android, ios)
  */
-function run(framework, wrapper, platform) {
-  console.log('run', arguments)
+function install(wrapper) {
+  // Fail fast
+  if (wrapper !== 'cordova') {
+    console.error(`Install of ${wrapper} plugins not supported.`);
+    process.exit(-1);
+  }
+
+  const output = execSync(`ls | grep ${wrapper}-plugin`, { cwd: `${rootPath}/packages` }).toString();
+  const plugins = output.split('\n').filter(p => !!p);
+  
+  for (const p of plugins) {
+    execute(`cordova plugin add ../${p}`, { cwd: `${rootPath}/packages/${wrapper}`})
+  }
 }
 
 /**
@@ -73,7 +108,7 @@ function restore(wrapper) {
 
 // Main process
 const [command, ...args] = params;
-const commands = { prepare, run, restore };
+const commands = { build, install, restore };
 const commandFn = commands[command];
 
 if (!commandFn) {
