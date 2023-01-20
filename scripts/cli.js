@@ -15,11 +15,39 @@ const wrapperSrc = {
   cordova: `${rootPath}/packages/cordova/www`,
 };
 
+function usage(erroMsg) {
+  if (erroMsg) {
+    console.error(`Error::${erroMsg}\n\n`);
+  }
+  console.log([
+    'Hybrid Apps Variatoins CLI:',
+    'This utility helps you build and try different frameworks with x-platform frameworks.',
+    '',
+    'Supported UI Frameworks: Angular | React',
+    'Supported x-platform Frameworks: capacitor | cordova',
+    '',
+    'Usage: npm run cli <command> <arguments>',
+    '',
+    'Available Commands:',
+    '  - build: builds for the given frameworks and platform. Params are',
+    '    * frameworkUI: the UI framework to use for the build (angular|react)',
+    '    * frameworkNavite: the native framework to use for the build (capacitor|cordova)',
+    '    * platform: the mobile platform you like to build for (android|ios)',
+    '',
+    '  - install: installs plugins defined for the native framework passed. Params are',
+    '    * frameworkNavite: the native framework where to install the plugins',
+    '',
+    '  - restore: resets all changes on the given native framework folder. Params are',
+    '    * frameworkNavite: the native framework where to reset',
+    '',
+  ].join('\n'));
+}
+
 function validateFramework(framework) {
   const frameworkKeys = Object.keys(buildAssets);
 
   if (frameworkKeys.indexOf(framework) === -1) {
-    console.error(`UI framework ${framework} unknown. Available ones are ${frameworkKeys}`);
+    usage(`UI framework ${framework} unknown. Available ones are ${frameworkKeys}`);
     process.exit(-1);
   }
 }
@@ -27,7 +55,7 @@ function validateWrapper(wrapper) {
   const wrapperKeys = Object.keys(wrapperSrc);
 
   if (wrapperKeys.indexOf(wrapper) === -1) {
-    console.error(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
+    usage(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
     process.exit(-1);
   }
 }
@@ -75,7 +103,7 @@ function build(framework, wrapper, platform) {
 function install(wrapper) {
   // Fail fast
   if (wrapper !== 'cordova') {
-    console.error(`Install of ${wrapper} plugins not supported.`);
+    usage(`Install of ${wrapper} plugins not supported.`);
     process.exit(-1);
   }
 
@@ -95,7 +123,7 @@ function restore(wrapper) {
   const wrapperKeys = Object.keys(wrapperSrc);
 
   if (wrapperKeys.indexOf(wrapper) === -1) {
-    console.error(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
+    usage(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
     process.exit(-1);
   }
 
@@ -112,7 +140,7 @@ const commands = { build, install, restore };
 const commandFn = commands[command];
 
 if (!commandFn) {
-  console.log(`CLI command ${command} does not exist.`)
+  usage(`CLI command ${command} does not exist.`)
   process.exit(-1);
 }
 
