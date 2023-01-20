@@ -2,6 +2,11 @@
   "name": "hybrid-apps-workspaces",
   "private": true,
   "scripts": {
-    "cli": "node ./scripts/cli.js ${0} ${1} ${2}"
+    "prepare": "husky install",
+    "cli": "node ./scripts/cli.js ${0} ${1} ${2}",
+    "hook": "node ./scripts/hooks.js ${0}"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0"
   }
 }
