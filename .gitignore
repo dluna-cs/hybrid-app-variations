@@ -1,3 +1,8 @@
+# System
 .DS_Store
+
+# Editors
 .idea/
+
+# Dependencies
 node_modules/
