@@ -58,5 +58,12 @@
         </podspec>
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
         <source-file src="src/ios/CDVCsMobPlugin.swift" />
+        <source-file src="src/ios/CommandHandlerProtocol.swift" />
+        <source-file src="src/ios/CommandHandleUrl.swift" />
+        <source-file src="src/ios/CommandOptIn.swift" />
+        <source-file src="src/ios/CommandOptOut.swift" />
+        <source-file src="src/ios/CommandSendDynamicVar.swift" />
+        <source-file src="src/ios/CommandSendScreenName.swift" />
+        <source-file src="src/ios/CommandSendTransaction.swift" />
     </platform>
 </plugin>
