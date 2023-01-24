@@ -1,17 +1,16 @@
 var exec = require('cordova/exec');
 
-function Assets () {}
+function CsMob () {}
 
 /**
- * Get assets list
+ * Sends a command to the SDK
  *
- * @param {Object} command the command to send to SDK
- * @param {String} command.type the command type
- * @param {Object} command.payload the data associated with the command
+ * @param {Object} name name of the command
+ * @param {Object} payload the data associated with the command or null
  */
-CsMob.prototype.sendCommand = function () {
+CsMob.prototype.sendCommand = function (name, payload) {
     return new Promise(function(resolve, reject) {
-        exec(resolve, reject, 'CsMob', 'sendCommand', [payload]);
+        exec(resolve, reject, 'CsMob', 'sendCommand', [name, payload]);
     });
 };
 

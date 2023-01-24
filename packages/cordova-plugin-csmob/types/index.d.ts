@@ -121,9 +121,9 @@ export type CurrencyCode =
   'ZWL';
 
 
-interface OptinCommand { type: 'optin' }
-interface OptoutCommand { type: 'optout' }
-interface SendScreenCommand { type: 'sendScreen'; payload: { name: string } }
+interface OptInCommand { type: 'optin' }
+interface OptOutCommand { type: 'optout' }
+interface SendScreenNameCommand { type: 'sendScreenName'; payload: { name: string } }
 interface SendTransactionCommand {
   type: 'sendTransaction';
   payload: { id: string; currency: CurrencyCode; value: number };
@@ -138,13 +138,19 @@ interface HandleUrlCommand {
   payload: { url: string };
 }
 
+type CsSdkCommand = OptInCommand | 
+  OptOutCommand |
+  SendScreenNameCommand |
+  SendTransactionCommand |
+  SendDynamicVarCommand |
+  HandleUrlCommand;
 
 /**
  * This plugin defines a global assets object with methos to interact with them
  */
 interface CsMob {
   /* Command API */
-  sendCommand(commant: CsCommand): Promise<void>;
+  sendCommand(command: CsSdkCommand): Promise<void>;
 }
 
-declare var assets: CsMob;
+declare var CsMob: CsMob;

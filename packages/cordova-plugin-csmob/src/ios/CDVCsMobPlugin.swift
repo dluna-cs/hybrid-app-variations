@@ -5,19 +5,29 @@ import ContentsquareModule
 import WebKit
 
 @objc(CDVCsMobPlugin) class CDVCsMobPlugin : CDVPlugin {
+    
+    var registeredCommands = [
+        "optin": [CommandOptIn()],
+        "optout": [CommandOptOut()],
+        "sendScreenName": [CommandSendScreenName()],
+        "handleUrl": [CommandHandleUrl()],
+        "sendTransaction": [CommandSendTransaction()],
+        "sendDynamicVar": [CommandSendDynamicVar()],
+        "handleUrl": [CommandHandleUrl()]
+    ]
 
   @objc(sendCommand:) // Declare your function name.
   func sendCommand(command: CDVInvokedUrlCommand) { // write the function code.
-    /* 
-      * Always assume that the plugin will fail.
-      * Even if in this example, it can't.
-    */
-    // Set the plugin result to fail.
-    var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "CDVContentsquarePlugin 'optIn' method Failed");
-    Contentsquare.optIn();
-    // Set the plugin result to succeed.
-    pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'optIn'");
-    // Send the function result back to Cordova.
-    self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
+      
+    let name = command.arguments[0] as? String ?? ""
+    
+    if let commandHandlers = registeredCommands[name] {
+      // TODO: wait for all executions or fire and forget
+      for handler in commandHandlers {
+          handler.handleCommand(command: command)
+      }
+    } else {
+      print("Unknown command \(name)")
+    }
   }
 }

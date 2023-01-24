@@ -1,7 +1,11 @@
 const { execSync } = require('child_process');
 
-function preCommit(cwd) {
-  const output = execSync('git status', { cwd }).toString();
+/**
+ * Pre-commit hook which stops the process if there are changes into cordova/capacitor folders
+ * @param {String} cwd path the the root of the project
+ */
+function preCommit(root) {
+  const output = execSync('git status', { cwd: root }).toString();
   const changes = output.split('\n').filter((line) => {
     return line.includes('packges/cordova') || line.includes('packages/capacitor');
   });
