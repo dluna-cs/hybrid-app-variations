@@ -10,7 +10,7 @@ function CsMobPlugin () {}
  */
 CsMobPlugin.prototype.sendCommand = function (name, payload) {
     return new Promise(function(resolve, reject) {
-        exec(resolve, reject, 'CsMobPlugin', 'sendCommand', [name, payload]);
+        exec(resolve, reject, 'CDVCsMobPlugin', 'sendCommand', [name, payload]);
     });
 };
 
