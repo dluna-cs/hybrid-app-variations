@@ -9,8 +9,14 @@ import ContentsquareModule
 import WebKit
 
 class CommandSendTransaction: CommandHandlerProtocol {
-    func handleCommand(command: CDVInvokedUrlCommand) {
-        // TODO: something
-        print("CommandSendTransaction command received")
+    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+        let value = payload["value"] as? Float ?? 0
+        let currency = payload["currency"] as? String ?? ""
+        let id = payload["id"] as? String ?? ""
+        
+        Contentsquare.send(transaction: CustomerTransaction(id: id, value: value, currency: currency))
+
+        return CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'sendTransaction' with currency: " + currency);
+        
     }
 }

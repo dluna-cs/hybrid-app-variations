@@ -130,7 +130,7 @@ interface SendTransactionCommand {
 }
 interface SendDynamicVarCommand {
   type: 'sendDynamicVar';
-  payload: { dynVarKey: string; dynVarValue: number | string };
+  payload: { key: string; value: number | string };
 }
 
 interface HandleUrlCommand {

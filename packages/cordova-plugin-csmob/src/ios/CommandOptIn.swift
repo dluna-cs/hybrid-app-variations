@@ -9,8 +9,9 @@ import ContentsquareModule
 import WebKit
 
 class CommandOptIn: CommandHandlerProtocol {
-    func handleCommand(command: CDVInvokedUrlCommand) {
-        // TODO: something
-        print("Opt in command received")
+    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+        Contentsquare.optIn();
+        
+        return CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'optIn'");
     }
 }

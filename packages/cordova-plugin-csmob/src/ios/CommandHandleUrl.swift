@@ -9,8 +9,11 @@ import ContentsquareModule
 import WebKit
 
 class CommandHandleUrl: CommandHandlerProtocol {
-    func handleCommand(command: CDVInvokedUrlCommand) {
-        // TODO: something
-        print("CommandHandleUrl command received")
+    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+      let urlParam = payload["url"] as? String ?? ""
+      let url = URL(string: urlParam);
+      
+      Contentsquare.handle(url: url!);
+      return CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'handleURL'");
     }
 }

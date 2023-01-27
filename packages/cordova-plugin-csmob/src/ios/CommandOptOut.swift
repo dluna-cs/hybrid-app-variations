@@ -9,8 +9,9 @@ import ContentsquareModule
 import WebKit
 
 class CommandOptOut: CommandHandlerProtocol {
-    func handleCommand(command: CDVInvokedUrlCommand) {
-        // TODO: something
-        print("Opt out command received")
+    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+        Contentsquare.optOut();
+        
+        return CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'optOut'");
     }
 }

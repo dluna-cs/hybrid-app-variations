@@ -5,27 +5,34 @@ import ContentsquareModule
 import WebKit
 
 @objc(CDVCsMobPlugin) class CDVCsMobPlugin : CDVPlugin {
-    
-    var registeredCommands = [
-        "optin": CommandOptIn(),
-        "optout": CommandOptOut(),
-        "sendScreenName": CommandSendScreenName(),
-        "handleUrl": CommandHandleUrl(),
-        "sendTransaction": CommandSendTransaction(),
-        "sendDynamicVar": CommandSendDynamicVar(),
-        "handleUrl": CommandHandleUrl()
-    ] as [String : CommandHandlerProtocol]
+  var registeredCommands = [:] as [String : CommandHandlerProtocol]
 
-  @objc(sendCommand:) // Declare your function name.
-  func sendCommand(command: CDVInvokedUrlCommand) { // write the function code.
+  open override func pluginInitialize() {
+      // Extension point for new commands
+      registeredCommands = [
+          "optin": CommandOptIn(),
+          "optout": CommandOptOut(),
+          "sendScreenName": CommandSendScreenName(),
+          "handleUrl": CommandHandleUrl(),
+          "sendTransaction": CommandSendTransaction(),
+          "sendDynamicVar": CommandSendDynamicVar()
+      ]
+  }
+  
+  @objc(sendCommand:)
+  func sendCommand(command: CDVInvokedUrlCommand) {
       
-    let name = command.arguments[0] as? String ?? ""
+    let data = command.arguments[0] as? NSDictionary ?? [:]
+    let type = data["type"] as? String ?? ""
+    let payload = data["payload"] as? NSDictionary ?? [:]
     
-      if let commandHandler = registeredCommands[name] {
-      // TODO: wait for execution or fire and forget ???
-      commandHandler.handleCommand(command: command)
+    if let commandHandler = self.registeredCommands[type] {
+      let result = commandHandler.handleCommand(payload: payload)
+      self.commandDelegate!.send(result, callbackId: command.callbackId);
     } else {
-      print("Unknown command \(name)")
+      let message = "CDVContentsquarePlugin unknown SDK command type \(type)"
+      let error = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: message);
+      self.commandDelegate!.send(error, callbackId: command.callbackId);
     }
   }
 }
