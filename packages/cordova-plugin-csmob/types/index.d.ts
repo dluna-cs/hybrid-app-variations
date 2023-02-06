@@ -121,8 +121,8 @@ export type CurrencyCode =
   'ZWL';
 
 
-interface OptInCommand { type: 'optin' }
-interface OptOutCommand { type: 'optout' }
+interface OptInCommand { type: 'optIn' }
+interface OptOutCommand { type: 'optOut' }
 interface SendScreenNameCommand { type: 'sendScreenName'; payload: { name: string } }
 interface SendTransactionCommand {
   type: 'sendTransaction';

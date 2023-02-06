@@ -20,7 +20,7 @@
                 <param name="android-package" value="com.variations.cordova.csmob.CDVCsMobPlugin"/>
             </feature>
         </config-file>
-        <framework src="com.contentsquare.android:library:4.12.0" />
+        <framework src="com.contentsquare.android:library:4.15.0" />
         <source-file src="src/android/CDVCsMobPlugin.java" target-dir="src/com/variations/cordova/csmob" />
     </platform>
 
@@ -33,7 +33,7 @@
         </config-file>
         <podspec>
             <pods use-frameworks="true">
-                <pod name="CS_iOS_SDK_STATIC" spec="4.15.1"/>
+                <pod name="CS_iOS_SDK_STATIC" spec="4.19.0"/>
             </pods>
         </podspec>
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>

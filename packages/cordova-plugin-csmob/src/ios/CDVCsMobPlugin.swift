@@ -10,8 +10,8 @@ import WebKit
   open override func pluginInitialize() {
       // Extension point for new commands
       registeredCommands = [
-          "optin": CommandOptIn(),
-          "optout": CommandOptOut(),
+          "optIn": CommandOptIn(),
+          "optOut": CommandOptOut(),
           "sendScreenName": CommandSendScreenName(),
           "handleUrl": CommandHandleUrl(),
           "sendTransaction": CommandSendTransaction(),
