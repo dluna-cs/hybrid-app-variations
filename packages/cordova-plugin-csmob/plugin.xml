@@ -22,6 +22,14 @@
         </config-file>
         <framework src="com.contentsquare.android:library:4.15.0" />
         <source-file src="src/android/CDVCsMobPlugin.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CDVCsMobPlugin.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/ICommandHandler.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CommandHandleUrlHandler.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CommandOptInHandler.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CommandOptOutHandler.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CommandSendDynamicVarHandler.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CommandSendScreenNameHandler.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CommandSendTransactionHandler.java" target-dir="src/com/variations/cordova/csmob" />
     </platform>
 
     <!-- ios -->
