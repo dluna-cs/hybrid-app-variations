@@ -9,7 +9,7 @@ import ContentsquareModule
 import WebKit
 
 class CommandOptIn: CommandHandlerProtocol {
-    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+    func handleCommand(payload: NSDictionary) -> Void {
         Contentsquare.optIn();
     }
 }

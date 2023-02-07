@@ -10,12 +10,12 @@ import WebKit
   open override func pluginInitialize() {
       // Extension point for new commands
       registeredCommands = [
+          "handleUrl": CommandHandleUrl(),
           "optIn": CommandOptIn(),
           "optOut": CommandOptOut(),
+          "sendDynamicVar": CommandSendDynamicVar(),
           "sendScreenName": CommandSendScreenName(),
-          "handleUrl": CommandHandleUrl(),
-          "sendTransaction": CommandSendTransaction(),
-          "sendDynamicVar": CommandSendDynamicVar()
+          "sendTransaction": CommandSendTransaction()
       ]
   }
   
@@ -24,21 +24,16 @@ import WebKit
     let name = command.arguments[0] as? String ?? ""
     let payload = command.arguments[1] as? NSDictionary ?? [:]
 
-    let code = 404
-    let message = "CDVContentsquarePlugin unknown SDK command name \(name)"
+    var code = 404
+    var message = "CDVContentsquarePlugin unknown SDK command name \(name)"
 
     if let commandHandler = self.registeredCommands[name] {
       commandHandler.handleCommand(payload: payload)
-      // 
-      code = 404
+      code = 200
       message = "CDVContentsquarePlugin command \(name) processed"
-    } else {
-      let message = "CDVContentsquarePlugin unknown SDK command name \(name)"
-      let error = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: message);
-      self.commandDelegate!.send(error, callbackId: command.callbackId);
     }
 
-    let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAsDict: ["code": code, "message": message]);
+    let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: ["code": code, "message": message]);
     self.commandDelegate!.send(result, callbackId: command.callbackId);
   }
 }

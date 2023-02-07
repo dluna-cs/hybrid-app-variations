@@ -9,7 +9,7 @@ import ContentsquareModule
 import WebKit
 
 class CommandSendDynamicVar: CommandHandlerProtocol {
-    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+    func handleCommand(payload: NSDictionary) -> Void {
         let key = payload["key"] as? String ?? ""
         let strVal = payload["value"] as? String ?? ""
         let numVal = UInt32(strVal)

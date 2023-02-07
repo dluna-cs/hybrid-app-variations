@@ -9,7 +9,7 @@ import ContentsquareModule
 import WebKit
 
 class CommandHandleUrl: CommandHandlerProtocol {
-    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+    func handleCommand(payload: NSDictionary) -> Void {
       let urlParam = payload["url"] as? String ?? ""
       let url = URL(string: urlParam);
       

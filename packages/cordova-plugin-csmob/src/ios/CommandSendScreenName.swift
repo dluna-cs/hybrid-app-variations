@@ -9,7 +9,7 @@ import ContentsquareModule
 import WebKit
 
 class CommandSendScreenName: CommandHandlerProtocol {
-    func handleCommand(payload: NSDictionary) -> CDVPluginResult {
+    func handleCommand(payload: NSDictionary) -> Void {
         let name = payload["name"] as? String ?? ""
         
         Contentsquare.send(screenViewWithName: name);
