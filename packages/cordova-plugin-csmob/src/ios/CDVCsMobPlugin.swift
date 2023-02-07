@@ -21,18 +21,24 @@ import WebKit
   
   @objc(sendCommand:)
   func sendCommand(command: CDVInvokedUrlCommand) {
-      
-    let data = command.arguments[0] as? NSDictionary ?? [:]
-    let type = data["type"] as? String ?? ""
-    let payload = data["payload"] as? NSDictionary ?? [:]
-    
-    if let commandHandler = self.registeredCommands[type] {
-      let result = commandHandler.handleCommand(payload: payload)
-      self.commandDelegate!.send(result, callbackId: command.callbackId);
+    let name = command.arguments[0] as? String ?? ""
+    let payload = command.arguments[1] as? NSDictionary ?? [:]
+
+    let code = 404
+    let message = "CDVContentsquarePlugin unknown SDK command name \(name)"
+
+    if let commandHandler = self.registeredCommands[name] {
+      commandHandler.handleCommand(payload: payload)
+      // 
+      code = 404
+      message = "CDVContentsquarePlugin command \(name) processed"
     } else {
-      let message = "CDVContentsquarePlugin unknown SDK command type \(type)"
+      let message = "CDVContentsquarePlugin unknown SDK command name \(name)"
       let error = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: message);
       self.commandDelegate!.send(error, callbackId: command.callbackId);
     }
+
+    let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAsDict: ["code": code, "message": message]);
+    self.commandDelegate!.send(result, callbackId: command.callbackId);
   }
 }

@@ -6,5 +6,5 @@
 //
 
 protocol CommandHandlerProtocol {
-    func handleCommand(payload: NSDictionary) -> CDVPluginResult
+    func handleCommand(payload: NSDictionary) -> Void
 }

@@ -13,6 +13,5 @@ class CommandSendScreenName: CommandHandlerProtocol {
         let name = payload["name"] as? String ?? ""
         
         Contentsquare.send(screenViewWithName: name);
-        return CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'sendScreenName'");
     }
 }

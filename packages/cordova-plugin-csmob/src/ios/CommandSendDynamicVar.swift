@@ -19,7 +19,5 @@ class CommandSendDynamicVar: CommandHandlerProtocol {
         } else {
             Contentsquare.send(dynamicVar: DynamicVar(key: key, value: strVal))
         }
-        
-        return CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'handleURL'");
     }
 }

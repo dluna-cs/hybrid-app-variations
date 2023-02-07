@@ -14,6 +14,5 @@ class CommandHandleUrl: CommandHandlerProtocol {
       let url = URL(string: urlParam);
       
       Contentsquare.handle(url: url!);
-      return CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "CDVContentsquarePlugin processing 'handleURL'");
     }
 }

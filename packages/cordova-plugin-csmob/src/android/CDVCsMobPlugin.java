@@ -49,30 +49,39 @@ public class CDVCsMobPlugin extends CordovaPlugin {
    * @return                  True if the action was valid, false if not.
    */
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-    if ("sendCommand".equals(action)) {
-      JSONObject command = args.getJSONObject(0);
-      String type = command.getString("type");
-      JSONObject payload = command.getJSONObject("payload");
-      ICommandHandler commandHandler = this.commandHandlers.get(type);
+    JSONObject result = new JSONObject();
 
-      if (commandHandler != null) {
-        commandHandler.handle(payload, this);
-        JSONObject r = new JSONObject();
-        r.put("code", 200);
-        r.put("message", String.format("%s:: Command %s processed", TAG, type));
-        callbackContext.success(r);
-      } else {
-        JSONObject r = new JSONObject();
-        r.put("code", 404);
-        r.put("message", String.format("%s:: Command handler for %s not found", TAG, type));
-        callbackContext.error(r);
+    try {
+      // Assume error
+      String message = String.format("%s:: Action %s not supported", TAG, action);
+      int code = 400;
+
+      if ("sendCommand".equals(action)) {
+        JSONObject name = args.getString(0);
+        JSONObject payload = args.getJSONObject(0);
+        ICommandHandler commandHandler = this.commandHandlers.get(name);
+        Boolean existHandler = commandHandler != null;
+
+        // Update the possible error
+        message = String.format("%s:: Command %s processed", TAG, name);
+        code = 404;
+
+        if (existHandler) {
+          commandHandler.handle(payload, this);
+          message = String.format("%s:: Command %s processed", TAG, name);
+          code = 200;
+        }
+
+        result.put("code", code);
+        result.put("message", message);
       }
+    } catch (JSONException jsonException) {
+      result.put("code", 500);
+      result.put("message", String.format("%s:: Command %s exception %s", TAG, name, jsonException.getMessage()));
     }
-    JSONObject r = new JSONObject();
-    r.put("code", 404);
-    r.put("message", String.format("%s:: Plugin action %s not found", TAG, action));
-    callbackContext.error(r);
 
+    // We should success always but we can send an error code
+    callbackContext.success(result);
     return true;
   }
 }

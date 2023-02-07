@@ -120,37 +120,20 @@ export type CurrencyCode =
   'ZMK'|
   'ZWL';
 
-
-interface OptInCommand { type: 'optIn' }
-interface OptOutCommand { type: 'optOut' }
-interface SendScreenNameCommand { type: 'sendScreenName'; payload: { name: string } }
-interface SendTransactionCommand {
-  type: 'sendTransaction';
-  payload: { id: string; currency: CurrencyCode; value: number };
+interface CsSdkCommandMap {
+  'handleUrl': { url: string };
+  'optIn': void;
+  'optOut': void;
+  'sendDynamicVar': { key: string; value: number | string };
+  'sendScreenName': { name: string };
+  'sendTransaction': { id: string; currency: CurrencyCode; value: number };
 }
-interface SendDynamicVarCommand {
-  type: 'sendDynamicVar';
-  payload: { key: string; value: number | string };
-}
-
-interface HandleUrlCommand {
-  type: 'handleUrl';
-  payload: { url: string };
-}
-
-type CsSdkCommand = OptInCommand | 
-  OptOutCommand |
-  SendScreenNameCommand |
-  SendTransactionCommand |
-  SendDynamicVarCommand |
-  HandleUrlCommand;
-
 /**
  * This plugin defines a global assets object with methos to interact with them
  */
 interface CsMob {
   /* Command API */
-  sendCommand(command: CsSdkCommand): Promise<void>;
+  sendCommand<T extends keyof CsSdkCommandMap>(name: T, command: CsSdkCommandMap[T]): Promise<void>;
 }
 
 declare var CsMob: CsMob;
