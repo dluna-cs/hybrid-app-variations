@@ -7,7 +7,7 @@ const { execSync } = require('child_process');
 function preCommit(root) {
   const output = execSync('git status', { cwd: root }).toString();
   const changes = output.split('\n').filter((line) => {
-    return line.includes('packges/cordova') || line.includes('packages/capacitor');
+    return line.includes('packages/cordova') || line.includes('packages/capacitor');
   });
 
   if (changes.length) {
