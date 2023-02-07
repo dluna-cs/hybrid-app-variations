@@ -57,7 +57,7 @@ public class CDVCsMobPlugin extends CordovaPlugin {
       int code = 400;
 
       if ("sendCommand".equals(action)) {
-        JSONObject name = args.getString(0);
+        String name = args.getString(0);
         JSONObject payload = args.getJSONObject(0);
         ICommandHandler commandHandler = this.commandHandlers.get(name);
         Boolean existHandler = commandHandler != null;
@@ -77,7 +77,7 @@ public class CDVCsMobPlugin extends CordovaPlugin {
       }
     } catch (JSONException jsonException) {
       result.put("code", 500);
-      result.put("message", String.format("%s:: Command %s exception %s", TAG, name, jsonException.getMessage()));
+      result.put("message", String.format("%s:: Exception extracting command data %s", TAG, jsonException.getMessage()));
     }
 
     // We should success always but we can send an error code

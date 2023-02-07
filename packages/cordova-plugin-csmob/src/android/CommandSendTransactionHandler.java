@@ -16,7 +16,7 @@ public class CommandSendTransactionHandler implements ICommandHandler {
             String currency = payload.getString("currency");
 
             Transaction.TransactionBuilder builder = Transaction.builder(Float.parseFloat(value), currency);
-            if (id != null && !id.isEmpty()) {
+            if (!id.isEmpty()) {
                 builder.id(id);
             }
             Contentsquare.send(builder.build());
