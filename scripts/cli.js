@@ -120,13 +120,9 @@ function install(wrapper) {
  * @param {string} wrapper the wrapper to use (capacitor, cordova)
  */
 function restore(wrapper) {
-  const wrapperKeys = Object.keys(wrapperSrc);
-
-  if (wrapperKeys.indexOf(wrapper) === -1) {
-    usage(`Native wrapper ${wrapper} unknown. Available ones are ${wrapperKeys}`);
-    process.exit(-1);
-  }
-
+  // Fail fast
+  validateWrapper(wrapper);
+  
   const wrapperPath = `${rootPath}/packages/${wrapper}`
   execute(`git clean -xdf`, { cwd: wrapperPath });
   execute(`git restore -s@ -SW  -- packages/${wrapper}`, { cwd: rootPath });
