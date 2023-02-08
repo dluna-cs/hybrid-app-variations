@@ -5,7 +5,7 @@ const { execSync } = require('child_process');
  * @param {String} cwd path the the root of the project
  */
 function preCommit(root) {
-  const output = execSync('git status', { cwd: root }).toString();
+  const output = execSync('git diff --name-only --cached', { cwd: root }).toString();
   const changes = output.split('\n').filter((line) => {
     return line.includes('packages/cordova') || line.includes('packages/capacitor');
   });
