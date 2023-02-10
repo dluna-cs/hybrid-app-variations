@@ -58,12 +58,12 @@ public class CDVContentsquarePlugin extends CordovaPlugin {
 
       if ("sendCommand".equals(action)) {
         String name = args.getString(0);
-        JSONObject payload = args.getJSONObject(0);
+        JSONObject payload = args.getJSONObject(1);
         ICommandHandler commandHandler = this.commandHandlers.get(name);
         Boolean existHandler = commandHandler != null;
 
         // Update the possible error
-        message = String.format("%s:: Command %s processed", TAG, name);
+        message = String.format("%s:: Command %s unknown, check spelling", TAG, name);
         code = 404;
 
         if (existHandler) {

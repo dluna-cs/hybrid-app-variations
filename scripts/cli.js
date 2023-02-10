@@ -11,8 +11,8 @@ const buildAssets = {
   // vue: `${rootPath}/packages/app-react/build`,
 };
 const wrapperSrc = {
-  capacitor: `${rootPath}/packages/capacitor/dist`,
-  cordova: `${rootPath}/packages/cordova/www`,
+  capacitor: `${rootPath}/packages/capacitor-testing/dist`,
+  cordova: `${rootPath}/packages/cordova-testing/www`,
 };
 
 function usage(erroMsg) {
