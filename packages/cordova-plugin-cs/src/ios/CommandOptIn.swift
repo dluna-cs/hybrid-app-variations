@@ -1,8 +1,8 @@
 //
 //  CommandOptIn.swift
-//  Variations
+//  com.contentsquare.plugins.cordova
 //
-//  Created by David Luna Bistuer on 20/1/23.
+//  Created by Contentsquare Mobile Team on 20/1/23.
 //
 
 import ContentsquareModule
