@@ -1,23 +1,23 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="cordova-plugin-csmob"
-    version="0.0.1">
-    <name>Cordova CS Mobile</name>
-    <description>Cordova Cs Mobile Plugin for Experimentation</description>
-    <license>Apache 2.0</license>
-    <keywords>cordova,assets</keywords>
+    id="@contentsquare/cordova-plugin"
+    version="0.2.0">
+    <name>ContentsquarePlugin</name>
+    <description>Contentsquare Cordova Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,android,ios</keywords>
     
     <asset src="www/web-view-tracking-tag-dev.min.js" target="js/wv_tag.js" />
-    <js-module src="www/ContentsquarePlugin.js" name="ContentsquarePlugin">
+    <js-module src="www/ContentsquarePlugin.js" name="contentsquare-cordova-plugin">
         <clobbers target="ContentsquarePlugin" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="CsMob" >
-                <param name="android-package" value="com.variations.cordova.csmob.CDVContentsquarePlugin"/>
+            <feature name="Contentsquare" >
+                <param name="android-package" value="com.contentsquare.plugins.cordova.CDVContentsquarePlugin" onload="true"/>
             </feature>
         </config-file>
         <framework src="com.contentsquare.android:library:4.15.0" />
@@ -34,7 +34,7 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="CDVContentsquarePlugin">
+            <feature name="Contentsquare">
                 <param name="ios-package" value="CDVContentsquarePlugin"/>
             </feature>
         </config-file>

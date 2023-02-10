@@ -1,4 +1,4 @@
-// Type definitions for cordova-plugin-csmob
+// Type definitions for ContentsquarePlugin
 export type CurrencyCode =
   'USD'|
   'CAD'|
