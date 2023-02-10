@@ -19,6 +19,7 @@
  *
  */
 
+// TODO: check how to adap the tests
 exports.defineAutoTests = function () {
   describe('Device Information (window.device)', function () {
     it('should exist', function () {

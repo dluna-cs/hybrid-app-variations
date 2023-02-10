@@ -11,14 +11,14 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CDVCsMobPlugin extends CordovaPlugin {
-  public static final String TAG = "CDVCsMobPlugin";
+public class CDVContentsquarePlugin extends CordovaPlugin {
+  public static final String TAG = "CDVContentsquarePlugin";
 
   public Map<String, ICommandHandler> commandHandlers = new HashMap<>();
   /**
    * Constructor.
    */
-  public CDVCsMobPlugin() {
+  public CDVContentsquarePlugin() {
   }
 
   /**

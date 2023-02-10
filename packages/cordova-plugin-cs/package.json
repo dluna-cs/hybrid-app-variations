@@ -1,0 +1,37 @@
+{
+  "name": "@contentsquare/cordova-plugin",
+  "version": "0.2.0",
+  "description": "A Cordova plugin that wraps the Contentsquare SDK with an easy to use API.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "cordova": {
+    "id": "@contentsquare/cordova-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "android",
+    "ios",
+    "contentsquare"
+  ],
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint ."
+  },
+  "author": {
+    "name": "Contentsquare Mobile Team",
+    "email": "mobile@contentsquare.com"
+  },
+  "devDependencies": {
+    "@cordova/eslint-config": "^3.0.0"
+  }
+}

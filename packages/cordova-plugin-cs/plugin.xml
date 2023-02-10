@@ -9,19 +9,19 @@
     <keywords>cordova,assets</keywords>
     
     <asset src="www/web-view-tracking-tag-dev.min.js" target="js/wv_tag.js" />
-    <js-module src="www/CsMobPlugin.js" name="CsMobPlugin">
-        <clobbers target="CsMobPlugin" />
+    <js-module src="www/ContentsquarePlugin.js" name="ContentsquarePlugin">
+        <clobbers target="ContentsquarePlugin" />
     </js-module>
 
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="CsMob" >
-                <param name="android-package" value="com.variations.cordova.csmob.CDVCsMobPlugin"/>
+                <param name="android-package" value="com.variations.cordova.csmob.CDVContentsquarePlugin"/>
             </feature>
         </config-file>
         <framework src="com.contentsquare.android:library:4.15.0" />
-        <source-file src="src/android/CDVCsMobPlugin.java" target-dir="src/com/variations/cordova/csmob" />
+        <source-file src="src/android/CDVContentsquarePlugin.java" target-dir="src/com/variations/cordova/csmob" />
         <source-file src="src/android/ICommandHandler.java" target-dir="src/com/variations/cordova/csmob" />
         <source-file src="src/android/CommandHandleUrlHandler.java" target-dir="src/com/variations/cordova/csmob" />
         <source-file src="src/android/CommandOptInHandler.java" target-dir="src/com/variations/cordova/csmob" />
@@ -34,8 +34,8 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="CDVCsMobPlugin">
-                <param name="ios-package" value="CDVCsMobPlugin"/>
+            <feature name="CDVContentsquarePlugin">
+                <param name="ios-package" value="CDVContentsquarePlugin"/>
             </feature>
         </config-file>
         <podspec>
@@ -44,7 +44,7 @@
             </pods>
         </podspec>
         <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
-        <source-file src="src/ios/CDVCsMobPlugin.swift" />
+        <source-file src="src/ios/CDVContentsquarePlugin.swift" />
         <source-file src="src/ios/CommandHandlerProtocol.swift" />
         <source-file src="src/ios/CommandHandleUrl.swift" />
         <source-file src="src/ios/CommandOptIn.swift" />

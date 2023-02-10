@@ -1,6 +1,6 @@
 var exec = require('cordova/exec');
 
-function CsMobPlugin () {}
+function ContentsquarePlugin () {}
 
 /**
  * Sends a command to the SDK
@@ -8,10 +8,10 @@ function CsMobPlugin () {}
  * @param {Object} name name of the command
  * @param {Object} payload the data associated with the command or null
  */
-CsMobPlugin.prototype.sendCommand = function (name, payload) {
+ContentsquarePlugin.prototype.sendCommand = function (name, payload) {
     return new Promise(function(resolve, reject) {
-        exec(resolve, reject, 'CDVCsMobPlugin', 'sendCommand', [name, payload]);
+        exec(resolve, reject, 'CDVContentsquarePlugin', 'sendCommand', [name, payload]);
     });
 };
 
-module.exports = new CsMobPlugin();
+module.exports = new ContentsquarePlugin();

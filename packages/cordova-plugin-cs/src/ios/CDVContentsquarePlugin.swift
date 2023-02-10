@@ -4,7 +4,7 @@
 import ContentsquareModule
 import WebKit
 
-@objc(CDVCsMobPlugin) class CDVCsMobPlugin : CDVPlugin {
+@objc(CDVContentsquarePlugin) class CDVContentsquarePlugin : CDVPlugin {
   var registeredCommands = [:] as [String : CommandHandlerProtocol]
 
   open override func pluginInitialize() {

@@ -1,0 +1,17 @@
+{
+  "name": "@contentsquare/cordova-plugin-tests",
+  "version": "0.0.1",
+  "description": "",
+  "cordova": {
+    "id": "@contentsquare/cordova-plugin-tests",
+    "platforms": []
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": {
+    "name": "Contentsquare Mobile Team",
+    "email": "mobile@contentsquare.com"
+  },
+  "license": "MIT"
+}
