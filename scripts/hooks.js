@@ -7,7 +7,7 @@ const { execSync } = require('child_process');
 function preCommit(root) {
   const output = execSync('git diff --name-only --cached', { cwd: root }).toString();
   const changes = output.split('\n').filter((line) => {
-    return line.includes('packages/cordova') || line.includes('packages/capacitor');
+    return line.endsWith('packages/cordova') || line.endsWith('packages/capacitor');
   });
 
   if (changes.length) {
