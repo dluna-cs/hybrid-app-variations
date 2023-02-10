@@ -1,4 +1,4 @@
-package com.variations.cordova.csmob;
+package com.contentsquare.plugins.cordova;
 
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONObject;

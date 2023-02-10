@@ -1,4 +1,4 @@
-package com.variations.cordova.csmob;
+package com.contentsquare.plugins.cordova;
 
 import com.contentsquare.android.Contentsquare;
 import com.contentsquare.android.api.model.Transaction;
