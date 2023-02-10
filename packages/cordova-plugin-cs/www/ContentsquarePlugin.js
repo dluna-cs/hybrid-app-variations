@@ -10,7 +10,7 @@ function ContentsquarePlugin () {}
  */
 ContentsquarePlugin.prototype.sendCommand = function (name, payload) {
     return new Promise(function(resolve, reject) {
-        exec(resolve, reject, 'CDVContentsquarePlugin', 'sendCommand', [name, payload]);
+        exec(resolve, reject, 'ContentsquarePlugin', 'sendCommand', [name, payload]);
     });
 };
 

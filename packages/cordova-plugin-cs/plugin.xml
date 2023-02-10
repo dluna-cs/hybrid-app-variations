@@ -16,7 +16,7 @@
     <!-- android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Contentsquare" >
+            <feature name="ContentsquarePlugin" >
                 <param name="android-package" value="com.contentsquare.plugins.cordova.CDVContentsquarePlugin" onload="true"/>
             </feature>
         </config-file>
@@ -34,7 +34,7 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="Contentsquare">
+            <feature name="ContentsquarePlugin">
                 <param name="ios-package" value="CDVContentsquarePlugin"/>
             </feature>
         </config-file>

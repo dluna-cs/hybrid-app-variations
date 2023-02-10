@@ -86,6 +86,12 @@ function build(framework, wrapper, platform) {
     process.exit(-1);
   }
 
+  // Make sure platform is there
+  if (wrapper === 'cordova') {
+    console.log(`Ensuring ${platform} for ${wrapper} is present.`)
+    execute(`cordova platform add ${platform} || true`, { cwd: `${rootPath}/packages/${wrapper}` });
+  }
+
   const source = buildAssets[framework];
   const dest = wrapperSrc[wrapper];
   const wrapperCli = wrapper === 'cordova' ? 'cordova' : 'npx cap';
