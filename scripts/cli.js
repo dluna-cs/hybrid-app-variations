@@ -89,7 +89,7 @@ function build(framework, wrapper, platform) {
   // Make sure platform is there
   if (wrapper === 'cordova') {
     console.log(`Ensuring ${platform} for ${wrapper} is present.`)
-    execute(`cordova platform add ${platform} || true`, { cwd: `${rootPath}/packages/${wrapper}` });
+    execute(`cordova platform add ${platform} || true`, { cwd: `${rootPath}/packages/${wrapper}-testing` });
   }
 
   const source = buildAssets[framework];
@@ -99,7 +99,7 @@ function build(framework, wrapper, platform) {
   console.log(`Preparing ${framework} project for ${wrapper} wrapper.`)
   execute('npm run build', { cwd: `${rootPath}/packages/app-${framework}` });
   execute(`cp -r ${source}/* ${dest}`);
-  execute(`${wrapperCli} build ${platform}`, { cwd: `${rootPath}/packages/${wrapper}` });
+  execute(`${wrapperCli} build ${platform}`, { cwd: `${rootPath}/packages/${wrapper}-testing` });
 }
 
 /**
@@ -117,7 +117,7 @@ function install(wrapper) {
   const plugins = output.split('\n').filter(p => !!p);
   
   for (const p of plugins) {
-    execute(`cordova plugin add ../${p}`, { cwd: `${rootPath}/packages/${wrapper}`})
+    execute(`cordova plugin add ../${p}`, { cwd: `${rootPath}/packages/${wrapper}-testing`})
   }
 }
 

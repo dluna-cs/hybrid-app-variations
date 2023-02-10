@@ -5,9 +5,10 @@ const { execSync } = require('child_process');
  * @param {String} cwd path the the root of the project
  */
 function preCommit(root) {
+  const blocked = ['packages/cordova-testing', 'packages/capacitor-testing']
   const output = execSync('git diff --name-only --cached', { cwd: root }).toString();
   const changes = output.split('\n').filter((line) => {
-    return line.endsWith('packages/cordova') || line.endsWith('packages/capacitor');
+    return blocked.some(b => line.endsWith(b));
   });
 
   if (changes.length) {
