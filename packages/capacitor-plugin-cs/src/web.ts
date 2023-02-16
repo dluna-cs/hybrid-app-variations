@@ -1,10 +1,10 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { CAPContentSqaurePluginPlugin } from './definitions';
+import type { CAPContentsquarePluginPlugin } from './definitions';
 
-export class CAPContentSqaurePluginWeb
+export class CAPContentsquarePluginWeb
   extends WebPlugin
-  implements CAPContentSqaurePluginPlugin
+  implements CAPContentsquarePluginPlugin
 {
   async echo(options: { value: string }): Promise<{ value: string }> {
     console.log('ECHO', options);

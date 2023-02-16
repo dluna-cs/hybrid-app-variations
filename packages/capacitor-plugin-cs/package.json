@@ -1,7 +1,7 @@
 {
   "name": "@contentsquare/capacitor-plugin",
   "version": "0.0.1",
-  "description": "Integrates Contentsquare mobile SDK into Capacitor Apps",
+  "description": "Plugin to add Contentsquare mobile SDK into Capacitor apps",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -37,7 +37,7 @@
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
     "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api CAPContentSqaurePluginPlugin --output-readme README.md --output-json dist/docs.json",
+    "docgen": "docgen --api CAPContentsquarePluginPlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",

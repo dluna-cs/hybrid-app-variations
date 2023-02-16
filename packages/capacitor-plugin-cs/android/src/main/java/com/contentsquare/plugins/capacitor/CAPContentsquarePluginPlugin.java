@@ -6,10 +6,10 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
 
-@CapacitorPlugin(name = "CAPContentSqaurePlugin")
-public class CAPContentSqaurePluginPlugin extends Plugin {
+@CapacitorPlugin(name = "CAPContentsquarePlugin")
+public class CAPContentsquarePluginPlugin extends Plugin {
 
-    private CAPContentSqaurePlugin implementation = new CAPContentSqaurePlugin();
+    private CAPContentsquarePlugin implementation = new CAPContentsquarePlugin();
 
     @PluginMethod
     public void echo(PluginCall call) {

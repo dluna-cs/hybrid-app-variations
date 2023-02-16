@@ -1,6 +1,6 @@
 # @contentsquare/capacitor-plugin
 
-Integrates Contentsquare mobile SDK into Capacitor Apps
+Plugin to add Contentsquare mobile SDK into Capacitor apps
 
 ## Install
 
