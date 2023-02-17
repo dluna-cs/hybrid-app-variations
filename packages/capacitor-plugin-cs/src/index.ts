@@ -9,5 +9,14 @@ const CAPContentsquare = registerPlugin<CAPContentsquarePlugin>(
   },
 );
 
+const ContentsquarePlugin = {
+  sendCommand: function (name: string, payload: Record<string, any>): void {
+    console.log('sendCommand proxy');
+    CAPContentsquare.sendCommand({ name, payload });
+  }
+};
+
+
+
 export * from './definitions';
-export { CAPContentsquare };
+export { CAPContentsquare, ContentsquarePlugin };

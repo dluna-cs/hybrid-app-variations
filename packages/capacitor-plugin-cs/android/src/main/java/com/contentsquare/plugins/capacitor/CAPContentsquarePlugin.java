@@ -11,12 +11,14 @@ public class CAPContentsquarePlugin extends Plugin {
 
     private CAPContentsquare implementation = new CAPContentsquare();
 
-    @PluginMethod
-    public void echo(PluginCall call) {
+    @PluginMethod(returnType = PluginMethod.RETURN_NONE)
+    public void sendCommand(PluginCall call) {
         String value = call.getString("value");
 
         JSObject ret = new JSObject();
         ret.put("value", implementation.echo(value));
         call.resolve(ret);
+
+        
     }
 }

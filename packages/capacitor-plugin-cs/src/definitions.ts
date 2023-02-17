@@ -1,3 +1,13 @@
+export interface PluginResult {
+  code: number;
+  message: string;
+}
+
+export interface SdkCommand {
+  name: string;
+  payload: Record<string, any>;
+}
+
 export interface CAPContentsquarePlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  sendCommand(options: SdkCommand): Promise<PluginResult>;
 }
