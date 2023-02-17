@@ -4,7 +4,7 @@ export default {
     {
       file: 'dist/plugin.js',
       format: 'iife',
-      name: 'capacitorCAPContentsquarePlugin',
+      name: 'capacitorCAPContentsquare',
       globals: {
         '@capacitor/core': 'capacitorExports',
       },

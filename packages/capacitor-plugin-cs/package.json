@@ -1,7 +1,7 @@
 {
   "name": "@contentsquare/capacitor-plugin",
   "version": "0.0.1",
-  "description": "Plugin to add Contentsquare mobile SDK into Capacitor apps",
+  "description": "Plugin which adds Contentsquare Analytics SDK into your Capacitor App",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -13,14 +13,14 @@
     "ios/Plugin/",
     "ContentsquareCapacitorPlugin.podspec"
   ],
-  "author": "Contentsquare Mobile Team",
+  "author": "Contentsquare MObile Team",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ContentSquare/dc_cs-capacitor-plugin.git"
+    "url": "git+https://github.com/dluna-cs/hybrid-app-variations.git"
   },
   "bugs": {
-    "url": "https://github.com/ContentSquare/dc_cs-capacitor-plugin/issues"
+    "url": "https://github.com/dluna-cs/hybrid-app-variations/issues"
   },
   "keywords": [
     "capacitor",
@@ -37,7 +37,7 @@
     "eslint": "eslint . --ext ts",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
     "swiftlint": "node-swiftlint",
-    "docgen": "docgen --api CAPContentsquarePluginPlugin --output-readme README.md --output-json dist/docs.json",
+    "docgen": "docgen --api CAPContentsquarePlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && npm run docgen && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",

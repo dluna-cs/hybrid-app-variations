@@ -1,13 +1,13 @@
 import { registerPlugin } from '@capacitor/core';
 
-import type { CAPContentsquarePluginPlugin } from './definitions';
+import type { CAPContentsquarePlugin } from './definitions';
 
-const CAPContentsquarePlugin = registerPlugin<CAPContentsquarePluginPlugin>(
-  'CAPContentsquarePlugin',
+const CAPContentsquare = registerPlugin<CAPContentsquarePlugin>(
+  'CAPContentsquare',
   {
-    web: () => import('./web').then(m => new m.CAPContentsquarePluginWeb()),
+    web: () => import('./web').then(m => new m.CAPContentsquareWeb()),
   },
 );
 
 export * from './definitions';
-export { CAPContentsquarePlugin };
+export { CAPContentsquare };

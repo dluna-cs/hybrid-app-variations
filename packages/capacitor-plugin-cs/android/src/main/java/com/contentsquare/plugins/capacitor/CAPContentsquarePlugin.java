@@ -1,11 +1,22 @@
 package com.contentsquare.plugins.capacitor;
 
-import android.util.Log;
+import com.getcapacitor.JSObject;
+import com.getcapacitor.Plugin;
+import com.getcapacitor.PluginCall;
+import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.CapacitorPlugin;
 
-public class CAPContentsquarePlugin {
+@CapacitorPlugin(name = "CAPContentsquare")
+public class CAPContentsquarePlugin extends Plugin {
 
-    public String echo(String value) {
-        Log.i("Echo", value);
-        return value;
+    private CAPContentsquare implementation = new CAPContentsquare();
+
+    @PluginMethod
+    public void echo(PluginCall call) {
+        String value = call.getString("value");
+
+        JSObject ret = new JSObject();
+        ret.put("value", implementation.echo(value));
+        call.resolve(ret);
     }
 }

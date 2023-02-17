@@ -1,8 +1,18 @@
 import Foundation
+import Capacitor
 
-@objc public class CAPContentsquarePlugin: NSObject {
-    @objc public func echo(_ value: String) -> String {
-        print(value)
-        return value
+/**
+ * Please read the Capacitor iOS Plugin Development Guide
+ * here: https://capacitorjs.com/docs/plugins/ios
+ */
+@objc(CAPContentsquarePlugin)
+public class CAPContentsquarePlugin: CAPPlugin {
+    private let implementation = CAPContentsquare()
+
+    @objc func echo(_ call: CAPPluginCall) {
+        let value = call.getString("value") ?? ""
+        call.resolve([
+            "value": implementation.echo(value)
+        ])
     }
 }
