@@ -28,6 +28,7 @@ public class CDVContentsquarePlugin extends CordovaPlugin {
    * @param cordova The context of the main Activity.
    * @param webView The CordovaWebView Cordova is running in.
    */
+  @Override
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
 
@@ -48,6 +49,7 @@ public class CDVContentsquarePlugin extends CordovaPlugin {
    * @param callbackContext   The callback id used when calling back into JavaScript.
    * @return                  True if the action was valid, false if not.
    */
+  @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     JSONObject result = new JSONObject();
 
