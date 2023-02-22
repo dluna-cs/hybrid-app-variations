@@ -129,9 +129,9 @@ function restore(wrapper) {
   // Fail fast
   validateWrapper(wrapper);
   
-  const wrapperPath = `${rootPath}/packages/${wrapper}`
+  const wrapperPath = `${rootPath}/packages/${wrapper}-testing`
   execute(`git clean -xdf`, { cwd: wrapperPath });
-  execute(`git restore -s@ -SW  -- packages/${wrapper}`, { cwd: rootPath });
+  execute(`git restore -s@ -SW  -- packages/${wrapper}-testing`, { cwd: rootPath });
   execute(`npm i`, { cwd: wrapperPath });
 }
 

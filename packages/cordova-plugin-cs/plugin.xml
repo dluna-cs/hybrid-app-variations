@@ -8,7 +8,8 @@
     <license>MIT</license>
     <keywords>cordova,android,ios</keywords>
     
-    <asset src="www/web-view-tracking-tag-dev.min.js" target="js/wv_tag.js" />
+    <asset src="www/tracking-tag-config.js" target="js/cs_config.js" />
+    <asset src="www/tracking-tag-dev.min.js" target="js/cs_tag.js" />
     <js-module src="www/ContentsquarePlugin.js" name="contentsquare-cordova-plugin">
         <clobbers target="ContentsquarePlugin" />
     </js-module>
