@@ -7,7 +7,17 @@ import WebKit
 @objc(CDVContentsquarePlugin) class CDVContentsquarePlugin : CDVPlugin {
   var registeredCommands = [:] as [String : CommandHandlerProtocol]
 
-  open override func pluginInitialize() {
+  override func pluginInitialize() {
+      super.pluginInitialize()
+
+      // Inject bridge
+      if let realWebView = self.webView as? WKWebView {
+          Contentsquare.register(webView: realWebView)
+          print("Webview injection successful")
+      } else {
+          print("Webview injection failed")
+      }
+
       // Extension point for new commands
       registeredCommands = [
           "handleUrl": CommandHandleUrl(),
