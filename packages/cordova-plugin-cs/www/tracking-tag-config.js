@@ -1,4 +1,5 @@
 var CS_CONF={
+    // TODO: 
     "projectId":27376,
     "status":1,
     "hostnames":[""],
@@ -7,7 +8,8 @@ var CS_CONF={
     "consentRequired":1,
     "allowSubdomains":1,
     "visitorCookieTimeout":34164000000,
-    "sampleRate":0,
+    // track always on WebView and led SDK decide?
+    "sampleRate":100,
     "replayRecordingRate":0,
     "validationRate":1,
     "lastTrackingDraw":null,
@@ -18,9 +20,10 @@ var CS_CONF={
     "eMerchandisingEnabled":0,
     "mouseMoveHeatmapEnabled":0,
     "autoInsightsEnabled":1,
+    // track all types of errors
     "jsErrorsEnabled":1,
-    "customErrorsEnabled":0,
-    "jsCustomErrorsEnabled":0,
+    "customErrorsEnabled":1,
+    "jsCustomErrorsEnabled":1,
     "apiErrorsEnabled":1,
     "customHashIdEnabled":0,
     "recordingEncryptionEnabled":0,
@@ -37,7 +40,8 @@ var CS_CONF={
     "experimental":null,
     "iframesTracking":0,
     "textVisibilityEnabled":0,
-    "cookielessTrackingEnabled":0,
+    // iOS WKWebView has some cookie issues and its already handled in the SDK
+    "cookielessTrackingEnabled":1,
     "malkaUrlEnabled":0,
     "malkaEtrEnabled":0,
     "pathComputationRules":{"reliableSelectors":[],
@@ -49,14 +53,16 @@ var CS_CONF={
     "apiErrors":{
         "validCustomHeaders":[],
         "validUrls":[],
-        "collectStandardHeaders":0,
-        "collectQueryParam":0,
-        "collectRequestBody":0,
-        "collectResponseBody":0
+        "collectStandardHeaders":1,
+        "collectQueryParam":1,
+        "collectRequestBody":1,
+        "collectResponseBody":1
     },
     "malkaQuotaServiceDomain":"q-aeu1.contentsquare.net",
     "malkaRecordingDomain":"k-aeu1.contentsquare.net"
     };
+
+    // TODO: check if this config is needed
     var CS_INTEGRATIONS_CONF = {"mopinion":{"settings":["enableFeedbackDisplayed",
     "enableFeedbackSubmitted",
     "enableFeedbackTriggerMethod",

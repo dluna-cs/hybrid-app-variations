@@ -6,6 +6,7 @@ const rootPath = cliPath.replace('/scripts/cli.js', '');
 
 
 const buildAssets = {
+  pokemon: `${rootPath}/packages/app-angular/dist/PokeApp`,
   angular: `${rootPath}/packages/app-angular/dist/app-angular`,
   react: `${rootPath}/packages/app-react/build`,
   // vue: `${rootPath}/packages/app-react/build`,

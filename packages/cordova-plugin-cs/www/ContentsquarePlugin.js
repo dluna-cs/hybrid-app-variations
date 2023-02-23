@@ -3,17 +3,18 @@ var exec = require('cordova/exec');
 function ContentsquarePlugin () {}
 
 function injectTag() {
-    const urls = ['js/cs_config.js', 'js/cs_tag.js'];
-    const alreadyInjected = !!document.querySelector('script[src='+ urls[0] +']');
+    const alreadyInjected = !!document.querySelector('#cs_config');
 
     if (alreadyInjected) {
         console.log('already injected')
         return;
     }
 
-    urls.forEach((url) => {
+    const names = ['cs_config', 'cs_tag'];
+    names.forEach((name) => {
         const node = document.createElement('script');
-        node.src = url;
+        node.id = name;
+        node.src = 'js/' + name + '.js';
         document.head.appendChild(node);
     });
 }
