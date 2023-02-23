@@ -24,14 +24,13 @@ function usage(erroMsg) {
     'Hybrid Apps Variatoins CLI:',
     'This utility helps you build and try different frameworks with x-platform frameworks.',
     '',
-    'Supported UI Frameworks: Angular | React',
     'Supported x-platform Frameworks: capacitor | cordova',
     '',
     'Usage: npm run cli <command> <arguments>',
     '',
     'Available Commands:',
     '  - build: builds for the given frameworks and platform. Params are',
-    '    * frameworkUI: the UI framework to use for the build (angular|react)',
+    '    * app: the UI Application to use for the build (pokemon|angular|react)',
     '    * frameworkNavite: the native framework to use for the build (capacitor|cordova)',
     '    * platform: the mobile platform you like to build for (android|ios)',
     '',
@@ -44,11 +43,11 @@ function usage(erroMsg) {
   ].join('\n'));
 }
 
-function validateFramework(framework) {
-  const frameworkKeys = Object.keys(buildAssets);
+function validateApp(app) {
+  const appKeys = Object.keys(buildAssets);
 
-  if (frameworkKeys.indexOf(framework) === -1) {
-    usage(`UI framework ${framework} unknown. Available ones are ${frameworkKeys}`);
+  if (appKeys.indexOf(app) === -1) {
+    usage(`UI App ${app} unknown. Available ones are ${appKeys}`);
     process.exit(-1);
   }
 }
@@ -74,13 +73,13 @@ function execute(command, options) {
 
 /**
  * Does the build of UI and wrapper for the platform
- * @param {string} framework the UI framework to build (angular, react, vue)
+ * @param {string} app the UI app to build (angular, react, pokemon)
  * @param {string} wrapper the wrapper to use (capacitor, cordova)
  * @param {string} platform the platform to build for (android, ios)
  */
-function build(framework, wrapper, platform) {
+function build(app, wrapper, platform) {
   // Validations
-  validateFramework(framework);
+  validateApp(app);
   validateWrapper(wrapper);
   if (platform !== 'android' && platform !== 'ios') {
     console.error(`Platform ${platform} unknown. Available ones are android & ios`);
@@ -93,12 +92,12 @@ function build(framework, wrapper, platform) {
     execute(`cordova platform add ${platform} || true`, { cwd: `${rootPath}/packages/${wrapper}-testing` });
   }
 
-  const source = buildAssets[framework];
+  const source = buildAssets[app];
   const dest = wrapperSrc[wrapper];
   const wrapperCli = wrapper === 'cordova' ? 'cordova' : 'npx cap';
 
-  console.log(`Preparing ${framework} project for ${wrapper} wrapper.`)
-  execute('npm run build', { cwd: `${rootPath}/packages/app-${framework}` });
+  console.log(`Preparing ${app} project for ${wrapper} wrapper.`)
+  execute('npm run build', { cwd: `${rootPath}/packages/app-${app}` });
   execute(`cp -r ${source}/* ${dest}`);
   execute(`${wrapperCli} build ${platform}`, { cwd: `${rootPath}/packages/${wrapper}-testing` });
 }
