@@ -1,5 +1,6 @@
 var CS_CONF={
-    // TODO: 
+    "trackWithSdk": 1,
+    // TODO: use the proper projectID? maybe not needed
     "projectId":27376,
     "status":1,
     "hostnames":[""],
