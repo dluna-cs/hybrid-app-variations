@@ -1,0 +1,81 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" id="back-button-accordion"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Accordion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="component-content">
+  <ion-list class="list-header">
+    <ion-item lines="full">
+      <ion-label class="component-description">
+        <span [innerHTML]="description"></span>
+      </ion-label>
+    </ion-item>
+    <ion-item class="component-link" href="https://ionicframework.com/docs/api/" target="_blank">
+      <ion-label color="primary">
+       API Docs
+      </ion-label>
+    </ion-item>
+    <ion-item lines="full" class="component-link" href="https://ionicframework.com/docs/components" target="_blank">
+      <ion-label color="primary">
+        UI Component Docs
+      </ion-label>
+    </ion-item>
+  </ion-list>
+  <ion-accordion-group>
+    <ion-accordion value="colors">
+      <ion-item slot="header" id="btn-accordion-0">
+        <ion-label>Colors</ion-label>
+      </ion-item>
+
+      <ion-list slot="content">
+        <ion-item>
+          <ion-label>Red</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Green</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Blue</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+    <ion-accordion value="shapes">
+      <ion-item slot="header" id="btn-accordion-1">
+        <ion-label>Shapes</ion-label>
+      </ion-item>
+
+      <ion-list slot="content">
+        <ion-item>
+          <ion-label>Circle</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Triangle</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>Square</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+    <ion-accordion value="numbers">
+      <ion-item slot="header" id="btn-accordion-2">
+        <ion-label>Numbers</ion-label>
+      </ion-item>
+
+      <ion-list slot="content">
+        <ion-item>
+          <ion-label>1</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>2</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>3</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>

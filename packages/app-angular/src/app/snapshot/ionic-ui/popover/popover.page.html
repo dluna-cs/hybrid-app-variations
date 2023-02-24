@@ -1,0 +1,20 @@
+<ion-header translucent={true}>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" id="back-button-popover"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Popover</ion-title>
+    <ion-buttons slot="end">
+      <ion-button slot="end" (click)="showPopover($event)">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="component-content">
+  
+  <div class="ion-padding-start ion-padding-end">
+    <ion-button id="btn-popover-0" expand="block" (click)="showPopover($event)">Open Popover</ion-button>
+  </div>
+</ion-content>

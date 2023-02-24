@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button id="back-button-send-screen"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Send Screen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <p></p>
+  <ion-card>
+    <ion-card-header>
+      <h2>Screen Name</h2>
+    </ion-card-header>
+    <ion-item>
+      <ion-label position="floating">Screen name</ion-label>
+      <ion-input [(ngModel)]="screenName" id="input-screen-name"></ion-input>
+    </ion-item>
+    <ion-button (click)="sendScreenName()" expand="block" id="btn-submit-send-screen-name">
+      SEND SCREEN NAME
+    </ion-button>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Ionic Contentsquare
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Ionic Contentsquare</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item type="button" id="btn-menu-privacy" (click)="goToPage('basicfunctions')">
+      <h2>Privacy</h2>
+    </ion-item>
+    <ion-item type="button" id="btn-menu-send-screen" (click)="goToPage('send-screen')">
+      <h2>Send Screen</h2>
+    </ion-item>
+    <ion-item type="button" id="btn-menu-transaction" (click)="goToPage('transaction')">
+      <h2>Transaction</h2>
+    </ion-item>
+    <ion-item type="button" id="btn-menu-dynamic-var" (click)="goToPage('dynamic-var')">
+      <h2>Dynamic Var</h2>
+    </ion-item>
+    <ion-item type="button" id="btn-menu-snapshot" (click)="goToPage('snapshot')">
+      <h2>Snapshot</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>

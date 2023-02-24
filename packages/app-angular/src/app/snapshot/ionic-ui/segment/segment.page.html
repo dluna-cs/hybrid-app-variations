@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" id="back-button-segment"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Segment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment value="all">
+    <ion-segment-button value="all" id="btn-segment-0">All</ion-segment-button>
+    <ion-segment-button value="favorites" id="btn-segment-1">Favorites</ion-segment-button>
+  </ion-segment>
+<p></p>
+  <ion-segment [disabled]="true" value="disabled">
+    <ion-segment-button value="disabled" id="btn-segment-2">
+      <ion-label>Disabled</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="segment" id="btn-segment-3">
+      <ion-label>Segment</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+</ion-content>

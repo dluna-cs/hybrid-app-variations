@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button id="back-button-dynamic-var"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dynamic Var</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-title>
+      Items not typed
+    </ion-card-title>
+    <ion-button *ngFor="let item of dynamicVarItems; let i=index" (click)="sendDynVar(item)" expand="block"
+      id="btn-dynamic-var-{{i}}">
+      {{ item.title }}
+    </ion-button>
+  </ion-card>
+  <ion-card>
+    <ion-card-title>
+      Items typed
+    </ion-card-title>
+    <ion-button color="success" *ngFor="let item of dynamicVarItemsTyped; let i=index" (click)="sendDynVarTyped(item)" expand="block"
+      id="btn-dynamic-var-typed-{{i}}">
+      {{ item.title }}
+    </ion-button>
+  </ion-card>
+</ion-content>
